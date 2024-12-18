@@ -1,1 +1,0 @@
-void exec_input_commands(char *cmd);

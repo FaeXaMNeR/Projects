@@ -1,1 +1,0 @@
-int num(char *cmd, char **commands);
