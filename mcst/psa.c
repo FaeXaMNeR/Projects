@@ -132,7 +132,7 @@ Monochlen *parse(char *form, char **monoms) {
         monochlen[i].koef *= signs[i];
         monochlen[i].size = n;
 
-        //printf("koef = %d, var = %s\n", monochlen[i].koef, monochlen[i].var);
+        
     }
 
     if(minus_flag) {
@@ -223,6 +223,8 @@ void plus(char *psa_form1, char *psa_form2) {
     char result_form[2*PSA_LEN];
     kanon(monochlen, result_form, len);
     printf("%s\n", result_form);
+
+    free(monochlen);
 }
 
 void minus(char *psa_form1, char *psa_form2, int equal_flag) {
@@ -256,6 +258,8 @@ void minus(char *psa_form1, char *psa_form2, int equal_flag) {
         if(atoi(result_form) == 0) printf("0\n");
         else printf("%s\n", result_form);
     }
+
+    free(monochlen);
 }
 
 void mult(char *psa_form1, char *psa_form2) {
@@ -288,11 +292,12 @@ void mult(char *psa_form1, char *psa_form2) {
         }
     }
 
-    //for(int i = 0; i < size; i++) printf("%d %s\n", res_mono[i].koef, res_mono[i].var);
-
     char result_form[2*PSA_LEN];
     kanon(res_mono, result_form, size);
     printf("%s\n", result_form);
+
+    free(monochlen1);
+    free(monochlen2);
 }
 
 void divide(char *psa_form1, char *psa_form2) {
@@ -355,7 +360,9 @@ void divide(char *psa_form1, char *psa_form2) {
     char result_form[2*PSA_LEN];
     kanon(monochlen1, result_form, size);
     printf("%s\n", result_form);
-        
+
+    free(monochlen1);
+    free(monochlen2);        
 }
 
 int main() {
